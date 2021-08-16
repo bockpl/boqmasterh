@@ -175,6 +175,12 @@ ansible-playbook Playbooks/install_dep_MatLab.yml --connection=local --extra-var
 ansible-playbook Playbooks/install_boaccess_tools.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
 # iInstalacja glibc-devel dla gcc
 ansible-playbook Playbooks/install_glibc-dev.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
+# Instalacja wymagan dla qmastera SOGE
+ansible-playbook Playbooks/install_dep_SOGE_qmaster.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
+# Instalacja wymagan dla jupyterhub-a
+ansible-playbook Playbooks/install_dep_jupyterhub.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
+# Instalacja filebead dla kibany
+ansible-playbook Playbooks/install_filebead.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
 # Skasowanie katalogu z playbookami
 rm -rf /boplaybooks && \
 # Skasowanie tymczasowego srodowiska git i ansible
@@ -246,6 +252,8 @@ ENV LANG=en_US.UTF-8
 # Katalog w ktorymm jest uruchomiony jupyterhub, tam skladowane beda logi
 ENV JUPYTERHUB_WORKDIR=/var/run/jupyterhub
 ENV JUPYTERHUB_CONFIGDIR=/opt/software/Blueocean/Configs/jupyterhubs
+
+EXPOSE 6444/tcp 8000/tcp
 
 ADD start.sh /usr/local/bin/start.sh
 
