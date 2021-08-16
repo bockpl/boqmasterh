@@ -240,6 +240,12 @@ ADD monit/stop_slurmctld.sh /etc/monit.d/
 ADD monit/start_jupyterhub.sh /etc/monit.d/
 #ADD monit/*.sh /etc/monit.d/
 #RUN mkdir /var/run/nslcd
+ADD monit/start_filebeat.sh /etc/monit.d/
+ADD monit/stop_filebeat.sh /etc/monit.d/
+ADD monit/filebeat.conf /etc/monit.d/
+
+ADD filebeat/* /etc/filebeat/
+
 RUN chown nslcd -fR /var/run/nslcd
 RUN mkdir /var/run/slurm
 RUN chown slurm:slurm /var/run/slurm
